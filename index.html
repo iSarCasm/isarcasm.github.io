@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeon Looter</title>
+    <title>Fantasy Game Collection</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1>Dungeon Looter</h1>
-    <p>You've discovered ancient treasures in a dungeon! But your backpack can only hold <span id="maxWeight">8</span>kg. Choose your loot wisely!</p>
-    <div class="button-container">
-        <button onclick="restartGame()" class="restart-button">New Dungeon</button>
-        <button onclick="checkOptimalSolution()" class="check-button">Check Yourself</button>
-    </div>
-    
-    <div class="game-container">
-        <div class="items-list">
-            <h2>Available Treasures</h2>
-            <div id="availableItems"></div>
+    <div class="container">
+        <h1>Fantasy Game Collection</h1>
+        <div class="games-grid">
+            <a href="knapsack.html" class="game-card">
+                <div class="game-icon">
+                    <i class="fas fa-sack"></i>
+                </div>
+                <h2>Dungeon Looter</h2>
+                <p>Optimize your treasure hunting by choosing the most valuable items that fit in your backpack!</p>
+            </a>
+            <a href="knapsack2d.html" class="game-card">
+                <div class="game-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <h2>Dimensional Dungeon Looter</h2>
+                <p>A more challenging version with both weight and space constraints. Can you master the art of magical storage?</p>
+            </a>
+            <div class="game-card" style="opacity: 0.5; cursor: not-allowed;">
+                <div class="game-icon">
+                    <i class="fas fa-chess"></i>
+                </div>
+                <h2>Coming Soon</h2>
+                <p>More exciting games are on their way!</p>
+            </div>
         </div>
-        <div class="knapsack">
-            <h2>Your Backpack</h2>
-            <div id="selectedItems"></div>
-        </div>
     </div>
-    
-    <div id="status" class="status"></div>
-
-    <script src="game.js"></script>
 </body>
 </html>

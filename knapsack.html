@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Looter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="knapsack.css">
+</head>
+<body>
+    <div class="game-page">
+        <h1>Dungeon Looter</h1>
+        <p>You've discovered ancient treasures in a dungeon! But your backpack can only hold <span id="maxWeight">8</span>kg. Choose your loot wisely!</p>
+        <div class="button-container">
+            <button onclick="restartGame()" class="restart-button">New Dungeon</button>
+            <button onclick="checkOptimalSolution()" class="check-button">Check Yourself</button>
+        </div>
+        
+        <div class="game-container">
+            <div class="items-list">
+                <h2>Available Treasures</h2>
+                <div id="availableItems"></div>
+            </div>
+            <div class="knapsack">
+                <h2>Your Backpack</h2>
+                <div id="selectedItems"></div>
+            </div>
+        </div>
+        
+        <div id="status" class="status"></div>
+
+        <a href="index.html" class="back-button">Back to Games</a>
+    </div>
+
+    <script src="knapsack.js"></script>
+</body>
+</html> 

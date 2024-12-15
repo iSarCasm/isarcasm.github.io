@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensional Dungeon Looter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="knapsack2d.css">
+</head>
+<body>
+    <div class="game-page">
+        <div class="main-content">
+            <h1>Dimensional Dungeon Looter</h1>
+            <p>You've discovered ancient treasures in a magical dungeon! Your enchanted backpack can hold <span id="maxWeight">8</span>kg and <span id="maxSpace">10</span> cubic units. Choose your loot wisely!</p>
+            <div class="button-container">
+                <button onclick="restartGame()" class="restart-button">New Dungeon</button>
+                <button onclick="checkOptimalSolution()" class="check-button">Check Yourself</button>
+            </div>
+
+            <div class="game-container">
+                <div class="items-list">
+                    <h2>Available Treasures</h2>
+                    <div id="availableItems"></div>
+                </div>
+                <div class="knapsack">
+                    <h2>Your Backpack</h2>
+                    <div id="selectedItems"></div>
+                </div>
+            </div>
+
+            <a href="index.html" class="back-button">Back to Games</a>
+        </div>
+
+        <div class="status-container">
+            <div id="weight-status" class="status">
+                <h3>Weight Capacity</h3>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <div class="preview-bar"></div>
+                </div>
+            </div>
+            <div id="space-status" class="status">
+                <h3>Space Capacity</h3>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <div class="preview-bar"></div>
+                </div>
+            </div>
+            <div id="value-status" class="status">
+                <h3>Total Value</h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="knapsack2d.js"></script>
+</body>
+</html> 

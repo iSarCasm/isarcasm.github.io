@@ -1,5 +1,6 @@
 // All possible items in the game
 const itemTypes = [
+    // Original items
     { name: "Ancient Crown", weight: 2, value: 2000 },
     { name: "Magic Scroll", weight: 0.5, value: 800 },
     { name: "Golden Chalice", weight: 3, value: 1500 },
@@ -47,13 +48,14 @@ const itemTypes = [
     { name: "Werewolf Claw", weight: 0.2, value: 1600 }
 ];
 
-const maxWeight = 10;
+const lootSize = 15;
+const maxWeight = 8;
 let selectedItems = new Set();
 let currentItems = [];
 
 function generateRandomItems() {
     currentItems = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < lootSize; i++) {
         const randomItem = itemTypes[Math.floor(Math.random() * itemTypes.length)];
         currentItems.push({
             id: i + 1,
