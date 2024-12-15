@@ -99,23 +99,34 @@ function updateProgressBar(current, max, previewValue = 0) {
     let progressBarClass = 'progress-bar';
     let previewBarClass = 'preview-bar';
     
-    if (percentage >= 90) {
+    if (percentage >= 100) {
         progressBarClass += ' danger';
     } else if (percentage >= 70) {
         progressBarClass += ' warning';
     }
 
-    if (previewPercentage >= 90) {
-        previewBarClass += ' danger';
-    } else if (previewPercentage >= 70) {
-        previewBarClass += ' warning';
+    // For removal previews, adjust the preview bar position and width
+    let previewStyle = '';
+    if (previewValue < 0) {
+        previewBarClass += ' removal-preview';
+        // Position preview bar at the end of what will remain
+        const remainingPercentage = ((current + previewValue) / max) * 100;
+        previewStyle = `left: ${remainingPercentage}%; width: ${-previewValue / max * 100}%`;
+    } else {
+        previewStyle = `width: ${previewPercentage}%`;
+        if (previewPercentage >= 100) {
+            previewBarClass += ' danger';
+        } else if (previewPercentage >= 70) {
+            previewBarClass += ' warning';
+        }
     }
 
     return {
         progressBarClass,
         previewBarClass,
         percentage: Math.min(percentage, 100),
-        previewPercentage: Math.min(previewPercentage, 100)
+        previewPercentage: Math.min(previewPercentage, 100),
+        previewStyle
     };
 }
 
@@ -169,7 +180,7 @@ function updateDisplay() {
         <h3>Weight: ${currentWeight.toFixed(1)}/${maxWeight}kg<span></span></h3>
         <div class="progress-container">
             <div class="${weightProgress.progressBarClass}" style="width: ${weightProgress.percentage}%"></div>
-            <div class="${weightProgress.previewBarClass}" style="width: ${weightProgress.previewPercentage}%"></div>
+            <div class="${weightProgress.previewBarClass}" style="${weightProgress.previewStyle}"></div>
         </div>
     `;
 
@@ -179,7 +190,7 @@ function updateDisplay() {
         <h3>Space: ${currentSpace.toFixed(1)}/${maxSpace}u³<span></span></h3>
         <div class="progress-container">
             <div class="${spaceProgress.progressBarClass}" style="width: ${spaceProgress.percentage}%"></div>
-            <div class="${spaceProgress.previewBarClass}" style="width: ${spaceProgress.previewPercentage}%"></div>
+            <div class="${spaceProgress.previewBarClass}" style="${spaceProgress.previewStyle}"></div>
         </div>
     `;
 
@@ -206,20 +217,20 @@ function previewItem(id) {
     // Update weight status with preview
     const weightProgress = updateProgressBar(currentWeight, maxWeight, previewWeight);
     weightStatusDiv.innerHTML = `
-        <h3>Weight: ${currentWeight.toFixed(1)}/${maxWeight}kg<span>(→ ${(currentWeight + previewWeight).toFixed(1)})</span></h3>
+        <h3>Weight: ${currentWeight.toFixed(1)}/${maxWeight}kg<span></span></h3>
         <div class="progress-container">
             <div class="${weightProgress.progressBarClass}" style="width: ${weightProgress.percentage}%"></div>
-            <div class="${weightProgress.previewBarClass}" style="width: ${weightProgress.previewPercentage}%"></div>
+            <div class="${weightProgress.previewBarClass}" style="${weightProgress.previewStyle}"></div>
         </div>
     `;
 
     // Update space status with preview
     const spaceProgress = updateProgressBar(currentSpace, maxSpace, previewSpace);
     spaceStatusDiv.innerHTML = `
-        <h3>Space: ${currentSpace.toFixed(1)}/${maxSpace}u³<span>(→ ${(currentSpace + previewSpace).toFixed(1)})</span></h3>
+        <h3>Space: ${currentSpace.toFixed(1)}/${maxSpace}u³<span></span></h3>
         <div class="progress-container">
             <div class="${spaceProgress.progressBarClass}" style="width: ${spaceProgress.percentage}%"></div>
-            <div class="${spaceProgress.previewBarClass}" style="width: ${spaceProgress.previewPercentage}%"></div>
+            <div class="${spaceProgress.previewBarClass}" style="${spaceProgress.previewStyle}"></div>
         </div>
     `;
 
