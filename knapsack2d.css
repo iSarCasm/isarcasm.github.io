@@ -116,7 +116,7 @@
     background: #c17d11;
     transition: width 0.3s ease;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .progress-bar.warning {
@@ -134,7 +134,7 @@
     height: 100%;
     background: rgba(193, 125, 17, 0.3);
     transition: width 0.3s ease;
-    z-index: 1;
+    z-index: 2;
 }
 
 .preview-bar.warning {
@@ -142,7 +142,12 @@
 }
 
 .preview-bar.danger {
-    background: rgba(139, 0, 0, 0.3);
+    background: #8b0000;
+}
+
+.preview-bar.removal-preview {
+    background: #8b0000;
+    z-index: 3;
 }
 
 .item {
