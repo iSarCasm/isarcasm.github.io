@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensional Dungeon Tetris</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="knapsack3d.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/translucent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="game-page">
+        <h1>Dimensional Dungeon Tetris</h1>
+        <p>Pack your loot efficiently! Drag items into your inventory and double-click to rotate them. Your bag can hold up to <span id="maxWeight">10</span>kg.</p>
+        
+        <div class="game-container">
+            <div class="items-section">
+                <h2>Available Items <i class="fas fa-info-circle" id="items-info"></i></h2>
+                <div id="available-items" class="available-grid"></div>
+            </div>
+            
+            <div class="inventory-section">
+                <h2>Your Inventory <i class="fas fa-info-circle" id="inventory-info"></i></h2>
+                <div id="inventory-grid" class="grid-container"></div>
+                <div class="status-bar">
+                    <div id="weight-status">Weight: 0/10kg</div>
+                    <div id="value-status">Value: 0g</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="restartGame()" class="restart-button">
+                <i class="fas fa-dice"></i> New Dungeon
+            </button>
+            <button onclick="toggleAutoRotate()" class="auto-rotate-button">
+                <i class="fas fa-sync-alt"></i> Auto-Rotate
+            </button>
+        </div>
+
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Games
+        </a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.17/interact.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="knapsack3d.js"></script>
+</body>
+</html> 
